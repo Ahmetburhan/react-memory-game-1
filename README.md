@@ -1,5 +1,7 @@
-This is a memory game built in React.
+This is a memory game built in React + Redux.
 
 Clone repo and get started:
-`webpack`
-`open index.html`
+
+1) `webpack`
+
+2) `open index.html`

@@ -6,13 +6,16 @@ export default class Tile extends Component {
     // Bind event handlers
     this.handleClick = this.handleClick.bind(this)
   }
-  handleClick () {
-    console.log('you clicked me!')
+  handleClick (e) {
+    this.props.actions.flipUp(this.props.id, e.target.innerHTML) // flipUp('A')
+    this.props.checkMatching() // this invokes before state gets mapped to props
+    // change this to an asynchronous action that has access to state
   }
   render () {
-    const { value } = this.props
+    const { value, face } = this.props
     return (
-      <div className="tile" onClick={handleClick}>
+      // if first in active, show value and have it stay
+      <div className="tile" onClick={this.handleClick}>
         {value}
       </div>
     )
