@@ -1,14 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-DOM'
+import { Provider } from 'react-redux'
+import store from './store/store'
+import MemoryBoard from './MemoryBoard'
+import Settings from './Components/Settings'
 
-class App extends React.Component {
-  render () {
-    return (
-      <div>
-        Woo
-      </div>
-    )
-  }
-}
+const App = (props) =>
+  <div>Hi {props.name}
+    <Settings />
+    <MemoryBoard />
+  </div>
 
-ReactDOM.render(<App/>, document.getElementById('app'))
+window.store = store
+
+ReactDOM.render(
+  <Provider store={store}>
+    <App name="Person"/>
+  </Provider>, document.getElementById('app'))
