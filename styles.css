@@ -4,3 +4,16 @@ div#memory-board {
   height:540px;
   margin:0px auto;
 }
+
+.tile {
+  background: url(kitty.png) no-repeat;
+  border: #CCC 1px solid;
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 10px;
+  font-size: 64px;
+  cursor: pointer;
+  text-align: center;
+}
