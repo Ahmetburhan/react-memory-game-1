@@ -1,5 +1,11 @@
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    main: [
+      './src/index.js',
+      'webpack-dev-server/client?http://localhost:5000',
+      'webpack/hot/only-dev-server'
+    ]
+  },
   output: {
     filename: 'bundle.js'
   },
@@ -7,13 +13,12 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loaders: ['react-hot', 'babel?' + JSON.stringify({ presets: ['react', 'es2015' ], plugins: ['transform-es2015-spread', 'transform-object-rest-spread'] })],
         exclude: /node_modules/,
-        query: {
-          presets: ['react', 'es2015' ],
-          plugins: ["transform-es2015-spread", "transform-object-rest-spread"]
-        }
       }
     ]
+  },
+  devServer: {
+    port: 5000,
   }
 }
