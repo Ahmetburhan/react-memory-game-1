@@ -18,3 +18,16 @@ export function flipTilesDown () {
   }
 }
 
+// change app state.values array
+function changeLevel (level) {
+  return {
+    type: 'CHANGE_LVL',
+    lvl: level
+  }
+}
+
+export function resetGame () {
+  return {
+    type: 'RESET_GAME'
+  }
+}

@@ -1,5 +1,4 @@
 const initialState = {
-  values: [ 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D'],
   pair: [],
   matchedTilesIDs: [],
   tilesFlipped: 0
@@ -32,6 +31,14 @@ export default function tiles (state = initialState, action) {
       ...state,
       pair: [],
       matchedTilesIDs: updatedMatchedTilesIDs
+    }
+    case 'RESET_GAME':
+    return {
+      ...state,
+      values: [ 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D'],
+      pair: [],
+      matchedTilesIDs: [],
+      tilesFlipped: 0
     }
   }
   return state
