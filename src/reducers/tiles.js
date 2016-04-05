@@ -1,31 +1,38 @@
 const initialState = {
   values: [ 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D'],
-  activeValues: [],
+  pair: [],
   matchedTilesIDs: [],
   tilesFlipped: 0
 }
 
 export default function tiles (state = initialState, action) {
+  let updatedMatchedTilesIDs
   switch (action.type) {
     case 'FLIP_UP':
-    let updatedActiveValues = state.activeValues.concat(action.value)
-
-    // console.log('this should be added to state', updatedActiveValues)
+    let updatedPair = state.pair.concat(action.value)
+    updatedMatchedTilesIDs = state.matchedTilesIDs.concat(action.tileID)
+    // track tiles
     return {
       ...state,
-      activeValues: updatedActiveValues
+      pair: updatedPair,
+      matchedTilesIDs: updatedMatchedTilesIDs
     }
-    // case 'MATCH':
-    // let updatedMatchedTilesIDs = state.matchedTilesIDs.concat(action.tile)
-    // return {
-    //   matchedTilesIDs: updatedMatchedTilesIDs,
-    //   tilesFlipped: state.tilesFlipped += 1
-    // }
-    // case 'FLIP_DOWN':
-    // return {
-    //   ...state,
-    //   activeValues: [] // ,matchedTilesIDs: updatedFacedUps
-    // }
+    case 'MATCH':
+    // clear pair array and add to count
+    return {
+      ...state,
+      pair: [],
+      tilesFlipped: state.tilesFlipped += 2
+    }
+    case 'FLIP_DOWN':
+    // clear pair array & remove the last two elements of matchedTilesIDs
+    updatedMatchedTilesIDs = state.matchedTilesIDs.slice(0, state.matchedTilesIDs.length - 2)
+
+    return {
+      ...state,
+      pair: [],
+      matchedTilesIDs: updatedMatchedTilesIDs
+    }
   }
   return state
 }

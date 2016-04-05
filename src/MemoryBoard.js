@@ -7,21 +7,30 @@ import Tile from './components/Tile'
 class MemoryBoard extends Component {
   constructor (props) {
     super(props)
-    this.checkMatching = this.checkMatching.bind(this)
+    this.checkPairs = this.checkPairs.bind(this),
+    this.handleClicker = this.handleClicker.bind(this)
   }
-  checkMatching () {
-    // const { activeValues } = this.props.tiles
-    // if the two active tiles match, it will stay facing up
-    // else face both down
-
-    // console.log(this.props.tiles.activeValues)
-    // console.log('=====')
-    // console.log(store.getState().tiles.activeValues)
+  checkPairs (id) {
+    const { pair } = store.getState().tiles // need to replace this ;)
+    // console.log(this.props.actions)
+    if (pair.length === 2) {
+      if (pair[0] === pair[1]) {
+        this.props.actions.match(id)
+      }
+      else {
+        // in 5 seconds, clear matchedTileIDs array and pair array
+        setTimeout(() => { this.props.actions.flipTilesDown(id) }, 5000)
+      }
+    }
+  }
+  handleClicker (id, value) {
+    // need to check if user has clicked a different tile than previous one
+    if (this.props.tiles.matchedTilesIDs.indexOf(id) === -1) {
+      this.props.actions.flipUp(id, value) // flipUp('A')
+      this.checkPairs(id)
+    }
   }
   render () {
-
-    console.log(this.props.tiles.activeValues)
-    
     const { tiles } = this.props
     const { actions } = this.props
     let face = 'Down'
@@ -34,7 +43,8 @@ class MemoryBoard extends Component {
         id={index}
         value={val}
         face={face}
-        checkMatching={this.checkMatching} />
+        checkPairs={this.checkPairs}
+        handleClicker={this.handleClicker} />
     )
 
     return (

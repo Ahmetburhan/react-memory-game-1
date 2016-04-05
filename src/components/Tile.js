@@ -3,21 +3,24 @@ import React, { Component } from 'react'
 export default class Tile extends Component {
   constructor (props) {
     super(props)
-    // Bind event handlers
-    this.handleClick = this.handleClick.bind(this)
+    this.onClick = this.onClick.bind(this)
   }
-  handleClick (e) {
-    this.props.actions.flipUp(this.props.id, e.target.innerHTML) // flipUp('A')
-    this.props.checkMatching() // this invokes before state gets mapped to props
-    // change this to an asynchronous action that has access to state
+  onClick () {
+    this.props.handleClicker(this.props.id, this.props.value)
   }
   render () {
     const { value, face } = this.props
-    return (
-      // if first in active, show value and have it stay
-      <div className="tile" onClick={this.handleClick}>
+    if (this.props.tiles.matchedTilesIDs.indexOf(this.props.id) !== -1) {
+      return (
+        <div className="tile-value" onClick={this.onClick}>
         {value}
-      </div>
-    )
+        </div>
+      )
+    } else {
+        return (
+        <div className="tile-kitty" onClick={this.onClick}>
+        </div>
+      )
+    }
   }
 }

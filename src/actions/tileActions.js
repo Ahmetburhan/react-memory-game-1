@@ -1,21 +1,20 @@
 export function flipUp (id, val) {
   return {
     type: 'FLIP_UP',
-    tile: id,
+    tileID: id,
     value: val
   }
 }
 
-// export function match (id) {
-//   return {
-//     type: 'MATCH',
-//     tile: id
-//   }
-// }
+export function match () {
+  return {
+    type: 'MATCH'
+  }
+}
 
-// export function flipTilesDown () {
-//   return {
-//     type: 'FLIP_DOWN'
-//   }
-// }
+export function flipTilesDown () {
+  return {
+    type: 'FLIP_DOWN'
+  }
+}
 
