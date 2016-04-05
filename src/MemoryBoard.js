@@ -8,20 +8,34 @@ class MemoryBoard extends Component {
   constructor (props) {
     super(props)
     this.checkPairs = this.checkPairs.bind(this),
+    this.resetGame = this.resetGame.bind(this),
     this.handleClicker = this.handleClicker.bind(this)
   }
   checkPairs (id) {
-    const { pair } = store.getState().tiles // need to replace this ;)
-    // console.log(this.props.actions)
+    // 'this' points to MemoryBoard here, with the props correctly mapped...BUT
+    // 'this.props' doesn't seem to be updated with the state...
+    // maybe because this code is executed before the next map state to props
+
+    // Bad practice, but will use the state of the store for now
+    const { pair } = store.getState().tiles
+
     if (pair.length === 2) {
       if (pair[0] === pair[1]) {
         this.props.actions.match(id)
       }
       else {
-        // in 5 seconds, clear matchedTileIDs array and pair array
-        setTimeout(() => { this.props.actions.flipTilesDown(id) }, 5000)
+        // in 5 seconds, clear matchedTilesIDs array and pair array
+        setTimeout(() => { this.props.actions.flipTilesDown(id) }, 500)
       }
     }
+    if (store.getState().tiles.matchedTilesIDs.length >= this.props.board.values.length) {
+      // delay invocation the tile actually flips before resetting the game
+      setTimeout(() => { this.resetGame() }, 500)
+    }
+  }
+  resetGame () {
+    alert('you got all')
+    this.props.actions.resetGame()
   }
   handleClicker (id, value) {
     // need to check if user has clicked a different tile than previous one
@@ -31,19 +45,17 @@ class MemoryBoard extends Component {
     }
   }
   render () {
-    const { tiles } = this.props
+    const { tiles, board } = this.props
     const { actions } = this.props
     let face = 'Down'
 
-
-    let tileElements = tiles.values.map((val, index) =>
+    let tileElements = board.values.map((val, index) =>
       <Tile
         {...this.props}
         key={index}
         id={index}
         value={val}
         face={face}
-        checkPairs={this.checkPairs}
         handleClicker={this.handleClicker} />
     )
 
