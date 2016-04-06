@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as tileActions from './actions/tileActions'
+import * as game from './actions/game'
 import Tile from './components/Tile'
 
 class MemoryBoard extends Component {
@@ -29,7 +29,7 @@ class MemoryBoard extends Component {
         // ISSUE when settimeout is ran and user clicks another tile at the same time
 
         // in 5 seconds, clear matchedTilesIDs array and pair array
-        setTimeout(() => { this.props.actions.flipTilesDown(id) }, 500)
+        setTimeout(() => { this.props.actions.flipTilesDown(id) }, 100)
       }
     }
     if (store.getState().tiles.matchedTilesIDs.length >= this.props.board.values.length) {
@@ -52,7 +52,6 @@ class MemoryBoard extends Component {
   render () {
     const { tiles, board } = this.props
     const { actions } = this.props
-    let face = 'Down'
 
     let tileElements = board.values.map((val, index) =>
       <Tile
@@ -60,7 +59,6 @@ class MemoryBoard extends Component {
         key={index}
         id={index}
         value={val}
-        face={face}
         handleClicker={this.handleClicker} />
     )
 
@@ -78,7 +76,7 @@ const mapStateToProps = ({tiles, board}) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(tileActions, dispatch)
+    actions: bindActionCreators(game, dispatch)
   }
 }
 

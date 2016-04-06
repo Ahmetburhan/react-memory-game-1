@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import * as tileActions from './actions/tileActions'
+import * as game from './actions/game'
 import Option from './components/Option'
 
 export default class Settings extends Component {
@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    actions: bindActionCreators(tileActions, dispatch)
+    actions: bindActionCreators(game, dispatch)
   }
 }
 

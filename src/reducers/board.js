@@ -1,6 +1,6 @@
 const initialState = {
   setting: 'Easy',
-  values: [ 'A', 'A', 'B', 'B', 'C', 'C', 'D', 'D']
+  values: [ 'D', 'C', 'B', 'A', 'C', 'A', 'B', 'D']
 }
 
 export default function board (state = initialState, action) {

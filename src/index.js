@@ -5,8 +5,8 @@ import store from './store/store'
 import MemoryBoard from './MemoryBoard'
 import Settings from './Settings'
 
-const App = (props) =>
-  <div>Hi {props.name}
+const App = () =>
+  <div>
     <Settings />
     <MemoryBoard />
   </div>
@@ -15,5 +15,5 @@ window.store = store
 
 ReactDOM.render(
   <Provider store={store}>
-    <App name="Person"/>
+    <App/>
   </Provider>, document.getElementById('app'))

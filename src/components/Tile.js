@@ -9,7 +9,7 @@ export default class Tile extends Component {
     this.props.handleClicker(this.props.id, this.props.value)
   }
   render () {
-    const { value, face } = this.props
+    const { value } = this.props
     if (this.props.tiles.matchedTilesIDs.indexOf(this.props.id) !== -1) {
       return (
         <div className="tile-value" onClick={this.onClick}>
