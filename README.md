@@ -1,7 +1,21 @@
-This is a memory game built in React + Redux.
+## Memory game built in React + Redux.
 
-Clone repo and get started:
+### Clone repo and get started:
 
-1) `webpack`
+1) Install dependencies
 
-2) `open index.html`
+```
+npm install
+```
+
+2) Run build and dev server
+
+```
+npm start
+```
+
+3) Open app in browser.
+
+```
+open http://localhost:5000
+```
