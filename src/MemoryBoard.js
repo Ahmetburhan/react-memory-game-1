@@ -21,15 +21,20 @@ class MemoryBoard extends Component {
 
     if (pair.length === 2) {
       if (pair[0] === pair[1]) {
+        console.log('matching pair')
         this.props.actions.match(id)
       }
       else {
+        console.log('not matching')
+        // ISSUE when settimeout is ran and user clicks another tile at the same time
+
         // in 5 seconds, clear matchedTilesIDs array and pair array
         setTimeout(() => { this.props.actions.flipTilesDown(id) }, 500)
       }
     }
     if (store.getState().tiles.matchedTilesIDs.length >= this.props.board.values.length) {
       // delay invocation the tile actually flips before resetting the game
+      console.log('resetting game')
       setTimeout(() => { this.resetGame() }, 500)
     }
   }

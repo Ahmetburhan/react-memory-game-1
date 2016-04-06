@@ -3,7 +3,7 @@ import ReactDOM from 'react-DOM'
 import { Provider } from 'react-redux'
 import store from './store/store'
 import MemoryBoard from './MemoryBoard'
-import Settings from './Components/Settings'
+import Settings from './Settings'
 
 const App = (props) =>
   <div>Hi {props.name}
