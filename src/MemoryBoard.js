@@ -63,7 +63,7 @@ class MemoryBoard extends Component {
     )
 
     return (
-      <div id="memory-board">
+      <div className="memory-board" id={board.setting}>
         {tileElements}
       </div>
     )

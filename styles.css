@@ -1,13 +1,27 @@
-div#memory-board {
+.memory-board {
   background:#CCC;
-  width: 490px;
-  height:540px;
   margin:0px auto;
+  border-radius: 15px;
+}
+
+#Easy {
+  width: 490px;
+  height:245px;
+}
+
+#Medium {
+  width: 610px;
+  height:490px;
+}
+
+#Hard {
+  width: 610px;
+  height:735px;
 }
 
 .tile-kitty {
   background: url(kitty.png) no-repeat;
-  border: #CCC 1px solid;
+  border: #fff 1px solid;
   border-radius: 15px;
   width: 100px;
   height: 100px;
@@ -16,10 +30,13 @@ div#memory-board {
   font-size: 64px;
   cursor: pointer;
   text-align: center;
+  line-height: 150%;
 }
 
 .tile-value {
-  border: #CCC 1px solid;
+  color: #555;
+  font-family: Helvetica;
+  border: #fff 1px solid;
   border-radius: 15px;
   width: 100px;
   height: 100px;
@@ -28,4 +45,5 @@ div#memory-board {
   font-size: 64px;
   cursor: pointer;
   text-align: center;
+  line-height: 150%;
 }
