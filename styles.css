@@ -19,8 +19,7 @@
   height:735px;
 }
 
-.tile-kitty {
-  background: url(kitty.png) no-repeat;
+.tile {
   border: #fff 1px solid;
   border-radius: 15px;
   width: 100px;
@@ -33,19 +32,25 @@
   line-height: 150%;
 }
 
-.tile-value {
+#kitty:hover {
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+  background-color: #fff;
+}
+
+#value:hover {
+  transition-duration: 1s;
+  transition-timing-function: ease-out;
+}
+
+#kitty {
+  background: url(kitty.png) no-repeat;
+}
+
+#value {
+  background-color: #fff;
   color: #555;
   font-family: Helvetica;
-  border: #fff 1px solid;
-  border-radius: 15px;
-  width: 100px;
-  height: 100px;
-  float: left;
-  margin: 10px;
-  font-size: 64px;
-  cursor: pointer;
-  text-align: center;
-  line-height: 150%;
 }
 
 .top-row {
