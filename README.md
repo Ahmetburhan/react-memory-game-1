@@ -19,3 +19,5 @@ npm start
 ```
 open http://localhost:5000
 ```
+
+![Demo](/demo.gif?raw=true "Demo of memory game")
